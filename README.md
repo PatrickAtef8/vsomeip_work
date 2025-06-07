@@ -44,3 +44,8 @@ SOME/IP and vSOMEIP are primarily used in:
 - **Development and Testing**: For simulating and validating SOME/IP-based networks in automotive software development.
 
 This introduction provides the foundation for understanding the SOME/IP protocol and its vSOMEIP implementation, setting the stage for practical applications like the client-server example in the accompanying project.
+
+## Reference
+- https://www.autosar.org/fileadmin/standards/R22-11/FO/AUTOSAR_PRS_SOMEIPProtocol.pdf
+
+- https://github.com/COVESA/vsomeip
