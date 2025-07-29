@@ -1,0 +1,31 @@
+cc_defaults {
+    name: "clientvsomieptrial",
+    vendor: true,
+
+    cppflags: [
+        "-std=c++11",
+        "-Wno-unused-parameter",
+    ],
+
+    shared_libs: [
+        "libvsomeip3",
+        "libvsomeip3-cfg",
+        "libvsomeip3-e2e",
+        "libvsomeip3-sd",
+        "liblog",
+    ],
+}
+
+cc_binary {
+    name: "client",
+    defaults: ["clientvsomieptrial"],
+    srcs: ["client.cpp"],
+}
+
+prebuilt_etc {
+    name: "client.json",
+    vendor: true,
+    sub_dir: "vsomeip",
+    src: "client.json",
+}
+
