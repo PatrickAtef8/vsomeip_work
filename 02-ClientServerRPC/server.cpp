@@ -2,10 +2,11 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <vector>
 
-constexpr vsomeip::service_t service_id = 0x4111;
+constexpr vsomeip::service_t service_id  = 0x4111;
 constexpr vsomeip::instance_t instance_id = 0x3111;
-constexpr vsomeip::method_t method_id = 0x6000;
+constexpr vsomeip::method_t method_id    = 0x6000;
 
 class server {
 private:
@@ -17,10 +18,12 @@ public:
 
         app->register_message_handler(service_id, instance_id, method_id,
             [this](const std::shared_ptr<vsomeip::message> &req) {
-                std::string received((char*)req->get_payload()->get_data(), req->get_payload()->get_length());
-                std::cout << "[Server] Hello from PC! Received message from client: " << received << std::endl;
+                std::string received(reinterpret_cast<const char*>(
+                                         req->get_payload()->get_data()),
+                                     req->get_payload()->get_length());
+                std::cout << "[Server] Yocto here! Received from client: " << received << std::endl;
 
-                std::string reply = "Hello from PC!";
+                std::string reply = "Yocto here! Door’s open, AOSP 15 — come on in 🚪🤝";
                 auto response_payload = vsomeip::runtime::get()->create_payload();
                 std::vector<vsomeip::byte_t> data(reply.begin(), reply.end());
                 response_payload->set_data(data);
