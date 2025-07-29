@@ -1,0 +1,16 @@
+[Unit]
+Description=vSomeIP Server Application
+After=network.target
+Requires=network.target
+
+[Service]
+Environment="VSOMEIP_CONFIGURATION=/etc/vsomeip/server.json"
+Environment="VSOMEIP_APPLICATION_NAME="server"
+ExecStart=/usr/bin/server
+Restart=always
+RestartSec=5
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
